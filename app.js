@@ -1,15 +1,13 @@
 const http = require('http');
-const hostname = '127.0.0.1';
-const port = 3000;
+const port = process.env.PORT || 3000; // Use Render's port, fallback to 3000
+const hostname = '0.0.0.0';           // Listen on all interfaces
 
-// Create a server object and pass an arrow function
 const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello World');
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World');
 });
 
-// Let the server listen on 127.0.0.1:3000
 server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
